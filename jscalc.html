@@ -1,0 +1,83 @@
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="jscalc.css">
+</head>
+<div id="display" class="display">0</div>
+<table class="tg">
+  <tr>
+    <td>
+      <div id=btncomma class="myButton" onclick="btn_num(1)">,</div>
+    </td>
+    <td>
+      <div id=btnopenparen class="myButton" onclick="btn_num(2)">(</div>
+    </td>
+    <td>
+      <div id=btncloseparen class="myButton" onclick="btn_num(3)">)</div>
+    </td>
+    <td>
+      <div id=btndivide class="myButton" onclick="btn_opcode('/')">/</div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div id=btn7 class="myButton" onclick="btn_num(7)">7</div>
+    </td>
+    <td>
+      <div id=btn8 class="myButton" onclick="btn_num(8)">8</div>
+    </td>
+    <td>
+      <div id=btn9 class="myButton" onclick="btn_num(9)">9</div>
+    </td>
+    <td>
+      <div id=btnmultiply class="myButton" onclick="btn_opcode('*')">*</div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div id=btn4 class="myButton" onclick="btn_num(4)">4</div>
+    </td>
+    <td>
+      <div id=btn5 class="myButton" onclick="btn_num(5)">5</div>
+    </td>
+    <td>
+      <div id=btn6 class="myButton" onclick="btn_num(6)">6</div>
+    </td>
+    <td>
+      <div id=btnminus class="myButton" onclick="btn_opcode('-')">-</div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div id=btn1 class="myButton" onclick="btn_num(1)">1</div>
+    </td>
+    <td>
+      <div id=btn2 class="myButton" onclick="btn_num(2)">2</div>
+    </td>
+    <td>
+      <div id=btn3 class="myButton" onclick="btn_num(3)">3</div>
+    </td>
+    <td>
+      <div id=btnplus class="myButton" onclick="btn_opcode('+')">+</div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div id=btn0 class="myButton" onclick="btn_num(0)">0</div>
+    </td>
+    <td>
+      <div id=btnpoint class="myButton" onclick="btn_point()">.</div>
+    </td>
+    <td>
+      <div id=btnnegate class="myButton" onclick="btn_num(3)">(-)</div>
+    </td>
+    <td>
+      <div id=btnequal class="myButton" onclick="btn_equal()">=</div>
+    </td>
+  </tr>
+</table>
+
+
+</html>
+<script src="jscalc.js">
+</script>
