@@ -2,6 +2,8 @@ var display = document.getElementById("display");
 var entry = 0;
 var operand1 = 0;
 var operand2 = 0;
+var operands = []
+var i = 0
 var operation = '';
 var point = false;
 var position = 0;
@@ -23,6 +25,8 @@ var btn_point = function() {
 
 var btn_opcode = function(op) {
   operand1 = entry;
+  operands[i] = entry;
+  i++
   point = false;
   position = 0;
   entry = 0;
@@ -32,16 +36,24 @@ var btn_opcode = function(op) {
 var btn_equal = function() {
     switch (operation) {
       case '+':
-        entry = operand1 + entry;
+      operands[i] = entry
+      i++
+        entry = operands.reduce(function(a,b){return a+b});
         break;
       case '-':
-        entry = operand1 - entry;
+      operands[i] = entry
+      i++
+        entry = operands.reduce(function(a,b){return a-b});
         break;
       case '*':
-        entry = operand1 * entry;
+      operands[i] = entry
+      i++
+        entry = operands.reduce(function(a,b){return a*b});
         break;
       case '/':
-        entry = operand1 / entry;
+      operands[i] = entry
+      i++
+        entry = operands.reduce(function(a,b){return a/b});
         break;
     }
     display.innerText = entry;
