@@ -1,12 +1,22 @@
 var display = document.getElementById("display");
 var entry = 0;
-var operand1 = 0;
-var operand2 = 0;
-var operands = []
-var i = 0
-var operation = '';
+var list = [];
 var point = false;
 var position = 0;
+var nocomma = function(l) {
+  var a = '';
+  for (i of l) {
+    a+=i.toString();
+  }
+  return a;
+}
+var btn_clear = function() {
+  list = [];
+  display.innerText = 0;
+  entry = 0;
+  point = false;
+  position = 0;
+}
 var btn_num = function(n) {
   if (point) {
     entry += n / position;
@@ -14,7 +24,7 @@ var btn_num = function(n) {
   } else {
     entry = entry * 10 + n;
   }
-  display.innerText = entry;
+  display.innerText = nocomma(list) + entry;
 }
 
 var btn_point = function() {
@@ -24,38 +34,36 @@ var btn_point = function() {
 }
 
 var btn_opcode = function(op) {
-  operand1 = entry;
-  operands[i] = entry;
-  i++
+  list.push(entry);
   point = false;
   position = 0;
   entry = 0;
-  operation = op;
+  list.push(op);
+  display.innerText = nocomma(list);
 }
 
 var btn_equal = function() {
-    switch (operation) {
-      case '+':
-      operands[i] = entry
-      i++
-        entry = operands.reduce(function(a,b){return a+b});
-        break;
-      case '-':
-      operands[i] = entry
-      i++
-        entry = operands.reduce(function(a,b){return a-b});
-        break;
-      case '*':
-      operands[i] = entry
-      i++
-        entry = operands.reduce(function(a,b){return a*b});
-        break;
-      case '/':
-      operands[i] = entry
-      i++
-        entry = operands.reduce(function(a,b){return a/b});
-        break;
+    list.push(entry);
+    while(list.length > 1){
+      var op1 = list.shift();
+      var op = list.shift();
+      var op2 = list.shift();
+      switch (op) {
+        case '+':
+          list.unshift(op1 + op2);
+          break;
+        case '-':
+          list.unshift(op1 - op2);
+          break;
+        case '*':
+          list.unshift(op1 * op2);
+          break;
+        case '/':
+          list.unshift(op1 / op2);
+          break;
+      }
     }
-    display.innerText = entry;
+    entry = list.shift();
+    display.innerText += "\n" + entry;
   }
   //@14to9
