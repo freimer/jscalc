@@ -259,7 +259,7 @@ var Calculator = {
         // replace the parenthesis and what's inside with the results
         l.splice(startParenIndex, 3, l[startParenIndex + 1]);
       }
-      return endParenIndex - startParenIndex + 1;
+      return endParenIndex - startParenIndex;
     } else {
       this.list = ['NaN'];
       return -1;
