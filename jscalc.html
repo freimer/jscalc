@@ -7,72 +7,104 @@
 <table class="tg">
   <tr>
     <td>
-      <div id=btncomma class="myButton" onclick="btn_clear()">C</div>
+      <div id=btnxneg1 class="myButton" onclick="Calculator.btn_opcode('^-1')">x<small><sup>-1</sup></small></div>
     </td>
     <td>
-      <div id=btnopenparen class="myButton" onclick="btn_num(2)">(</div>
+      <div id=btnsin class="myButton" onclick="Calculator.btn_opcode('sin(')">sin</div>
     </td>
     <td>
-      <div id=btncloseparen class="myButton" onclick="btn_num(3)">)</div>
+      <div id=btncos class="myButton" onclick="Calculator.btn_opcode('cos(')">cos</div>
     </td>
     <td>
-      <div id=btndivide class="myButton" onclick="btn_opcode('/')">/</div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div id=btn7 class="myButton" onclick="btn_num(7)">7</div>
+      <div id=btntan class="myButton" onclick="Calculator.btn_opcode('tan(')">tan</div>
     </td>
     <td>
-      <div id=btn8 class="myButton" onclick="btn_num(8)">8</div>
-    </td>
-    <td>
-      <div id=btn9 class="myButton" onclick="btn_num(9)">9</div>
-    </td>
-    <td>
-      <div id=btnmultiply class="myButton" onclick="btn_opcode('*')">*</div>
+      <div id=btnpower class="myButton" onclick="Calculator.btn_opcode('^')">^</div>
     </td>
   </tr>
   <tr>
     <td>
-      <div id=btn4 class="myButton" onclick="btn_num(4)">4</div>
+      <div id=btxsquared class="myButton" onclick="Calculator.btn_opcode('^2')">x<sup>2</sup></div>
     </td>
     <td>
-      <div id=btn5 class="myButton" onclick="btn_num(5)">5</div>
+      <div id=btncomma class="myButton" onclick="Calculator.btn_comma()">,</div>
     </td>
     <td>
-      <div id=btn6 class="myButton" onclick="btn_num(6)">6</div>
+      <div id=btnopenparen class="myButton" onclick="Calculator.btn_opcode('(')">(</div>
     </td>
     <td>
-      <div id=btnminus class="myButton" onclick="btn_opcode('-')">-</div>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <div id=btn1 class="myButton" onclick="btn_num(1)">1</div>
+      <div id=btncloseparen class="myButton" onclick="Calculator.btn_opcode(')')">)</div>
     </td>
     <td>
-      <div id=btn2 class="myButton" onclick="btn_num(2)">2</div>
-    </td>
-    <td>
-      <div id=btn3 class="myButton" onclick="btn_num(3)">3</div>
-    </td>
-    <td>
-      <div id=btnplus class="myButton" onclick="btn_opcode('+')">+</div>
+      <div id=btndivide class="myButton" onclick="Calculator.btn_opcode('/')">/</div>
     </td>
   </tr>
   <tr>
     <td>
-      <div id=btn0 class="myButton" onclick="btn_num(0)">0</div>
+      <div id=btnlog class="myButton" onclick="Calculator.btn_opcode('log(')">log</div>
     </td>
     <td>
-      <div id=btnpoint class="myButton" onclick="btn_point()">.</div>
+      <div id=btn7 class="myButton" onclick="Calculator.btn_num(7)">7</div>
     </td>
     <td>
-      <div id=btnnegate class="myButton" onclick="btn_num(3)">(-)</div>
+      <div id=btn8 class="myButton" onclick="Calculator.btn_num(8)">8</div>
     </td>
     <td>
-      <div id=btnequal class="myButton" onclick="btn_equal()">=</div>
+      <div id=btn9 class="myButton" onclick="Calculator.btn_num(9)">9</div>
+    </td>
+    <td>
+      <div id=btnmultiply class="myButton" onclick="Calculator.btn_opcode('*')">*</div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div id=btnln class="myButton" onclick="Calculator.btn_opcode('ln(')">ln</div>
+    </td>
+    <td>
+      <div id=btn4 class="myButton" onclick="Calculator.btn_num(4)">4</div>
+    </td>
+    <td>
+      <div id=btn5 class="myButton" onclick="Calculator.btn_num(5)">5</div>
+    </td>
+    <td>
+      <div id=btn6 class="myButton" onclick="Calculator.btn_num(6)">6</div>
+    </td>
+    <td>
+      <div id=btnminus class="myButton" onclick="Calculator.btn_opcode('-')">-</div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div id=btnsto class="myButton" onclick="Calculator.btn_sto()">sto</div>
+    </td>
+    <td>
+      <div id=btn1 class="myButton" onclick="Calculator.btn_num(1)">1</div>
+    </td>
+    <td>
+      <div id=btn2 class="myButton" onclick="Calculator.btn_num(2)">2</div>
+    </td>
+    <td>
+      <div id=btn3 class="myButton" onclick="Calculator.btn_num(3)">3</div>
+    </td>
+    <td>
+      <div id=btnplus class="myButton" onclick="Calculator.btn_opcode('+')">+</div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div id=btnclear class="myButton" onclick="Calculator.btn_clear()">C</div>
+    </td>
+    <td>
+      <div id=btn0 class="myButton" onclick="Calculator.btn_num(0)">0</div>
+    </td>
+    <td>
+      <div id=btnpoint class="myButton" onclick="Calculator.btn_point()">.</div>
+    </td>
+    <td>
+      <div id=btnnegate class="myButton" onclick="Calculator.btn_negate()">(-)</div>
+    </td>
+    <td>
+      <div id=btnequal class="myButton" onclick="Calculator.btn_equal()">=</div>
     </td>
   </tr>
 </table>
