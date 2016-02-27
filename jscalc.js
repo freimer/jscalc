@@ -1,5 +1,4 @@
 var Calculator = {
-  debugging: true,
   display: document.getElementById("display"),
   list: [],
   entrytext: 'NaN',
@@ -234,18 +233,12 @@ var Calculator = {
     if (startParenIndex > endIndex) {
       return 0; // didn't find anything
     }
-    if (this.debugging) {
-      console.log('Found ' + l[startParenIndex] + ' at position ' + startParenIndex);
-    }
     var count = 1; // how many close parenthesis we need to find
     /* Loop through rest of list, starting at the next position
      * incrementing each loop, and continuing to loop until either
      * we find the close parenthesis, or we reach the endIndex of the list
      */
     for (var endParenIndex = startParenIndex + 1; count > 0 && endParenIndex <= endIndex; endParenIndex++) {
-      if (this.debugging) {
-        console.log('Searching position ' + endParenIndex + ' for ' + count + ' )');
-      }
       if (typeof (l[endParenIndex]) == 'string' && l[endParenIndex].endsWith('(')) {
         count++;
       } else if (l[endParenIndex] == ')') {
@@ -254,38 +247,20 @@ var Calculator = {
     }
     if (count == 0) {
       endParenIndex--; // we actually found the last ) at the previous index
-      if (this.debugging) {
-        console.log('Computing ' + l.slice(startParenIndex + 1, endParenIndex));
-      }
       // compute what is (inside) the parethesis
       this.compute(l, startParenIndex + 1, endParenIndex - 1);
       /* the above should replace everything in the list from startParenIndex + 1
        * to endParenIndex - 1 with a single value, resulting in the items
        * '(' (or the starting implicit open parenthesis operation), results, ')'
        */
-      if (this.debugging) {
-        console.log('list: ' + l);
-      }
       if (l[startParenIndex] in this.operation) {
-        if (this.debugging) {
-          console.log('Performing operation ' + l.slice(startParenIndex, startParenIndex + 3));
-        }
         this.perform_operation(l, startParenIndex);
       } else {
         // replace the parenthesis and what's inside with the results
-        if (this.debugging) {
-          console.log('Replacing ' + l.slice(startParenIndex, startParenIndex + 3));
-        }
         l.splice(startParenIndex, 3, l[startParenIndex + 1]);
-      }
-      if (this.debugging) {
-        console.log('list: ' + l);
       }
       return endParenIndex - startParenIndex + 1;
     } else {
-      if (this.debugging) {
-        console.log("Unmatched parenthesis!");
-      }
       this.list = ['NaN'];
       return -1;
     }
@@ -299,16 +274,12 @@ var Calculator = {
     var e = end;
     var p;
     while (e > start) {
-      if (this.debugging) {
-        console.log('Scanning from ' + start + ' to ' + e);
-      }
       // handle parenthesis, and implicit parenthesis operations first
       var size = this.handle_parenthesis(l, start, e);
       if (size > 0) {
         e -= size;
         continue;
       } else if (size < 0) {
-        this.list = ['NaN'];
         return end - start + 1;
       }
       // loop through all of the operations, setting op to the key sorted
@@ -324,13 +295,14 @@ var Calculator = {
           // scan from end of list
           p = l.lastIndexOf(op, e);
         }
-        var min = p + Math.min.apply(null, this.operation[op].opIndex);
-        var max = p + Math.max.apply(null, this.operation[op].opIndex);
-        // if we found one before the end of the list
+        // if we found one before the start / end of the list
         if (p != -1) {
-          if (min >= start && p + max <= e) {
+          var min = p + Math.min.apply(null, this.operation[op].opIndex);
+          var max = p + Math.max.apply(null, this.operation[op].opIndex);
+          if (min >= start && max <= e) {
             // replace it and update the end index
             e -= this.perform_operation(l, p);
+            break;
           } else {
             this.list = ['NaN'];
             return end - start + 1;
@@ -378,7 +350,7 @@ var Calculator = {
     }
     this.compute(this.list, 0, this.list.length - 1);
     this.entrytext = this.list.shift();
-    if (this.entrytext == undefined) {
+    if (typeof (this.entrytext) == 'undefined') {
       this.entrytext = 'NaN';
     } else {
       this.entrytext = this.entrytext.toString();
